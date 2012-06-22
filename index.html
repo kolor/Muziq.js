@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Airy Music Player</title>
+		<link rel="stylesheet" href="assets/reset.css">
+		<link rel="stylesheet" href="assets/global.css">
+		<link rel="stylesheet" href="assets/artist.css">
+		      <link rel="stylesheet" href="libs/jplayer/skin/circle.player.css">  
+	</head>
+	<body>
+	    <div id="home" class="view">
+	        <input type=text placeholder="artist name"> <div class="button"></div>
+	    </div>
+	    <div id="artist-search" class="view"></div>
+        
+		<div id="artist-overview" class="view">
+		    <div class="col1">
+				<div class="artist-similar"></div>
+				<div class="player">
+                    <div id="jquery_jplayer_1" class="cp-jplayer"></div>
+                    <div id="cp_container_1" class="cp-container">
+                        <div class="cp-buffer-holder"> <!-- .cp-gt50 only needed when buffer is > than 50% -->
+                            <div class="cp-buffer-1"></div>
+                            <div class="cp-buffer-2"></div>
+                        </div>
+                        <div class="cp-progress-holder"> <!-- .cp-gt50 only needed when progress is > than 50% -->
+                            <div class="cp-progress-1"></div>
+                            <div class="cp-progress-2"></div>
+                        </div>
+                        <div class="cp-circle-control"></div>
+                        <ul class="cp-controls">
+                            <li><a href="#" class="cp-play" tabindex="1">play</a></li>
+                            <li><a href="#" class="cp-pause" style="display:none;" tabindex="1">pause</a></li> 
+                        </ul>
+                    </div>
+                </div>  
+			</div>
+			<div class="col2">
+                <div class="artist-tracks"></div>
+            </div>
+			<div class="col3">
+			    <div class="tracks-sources"></div>
+			    <a href="http://muziq.airy.me/setup.exe" target="_blank"><div class="ad"></div></a>
+			</div>
+			
+			
+		    
+		</div>
+        <div id="vk_api_transport"></div>
+		<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+		<script src="libs/php.js"></script>
+		<script src="http://vkontakte.ru/js/api/openapi.js"></script>
+		<script src="http://cdn.airy.me/detect.js"></script>
+		
+		      <script type="text/javascript" src="libs/jplayer/jquery.transform.js"></script>
+        <script type="text/javascript" src="libs/jplayer/jquery.grab.js"></script>
+        <script type="text/javascript" src="libs/jplayer/jquery.jplayer.js"></script>
+        <script type="text/javascript" src="libs/jplayer/mod.csstransforms.min.js"></script>
+        <script type="text/javascript" src="libs/jplayer/circle.player.js"></script>
+		
+		<script src="assets/helpers.js"></script>
+		<script src="assets/LastFm.js"></script>
+		<script src="assets/Vkontakte.js"></script>
+		<script src="assets/Discogs.js"></script>
+		
+		<script src="assets/global.js"></script>
+	</body>
+</html>
