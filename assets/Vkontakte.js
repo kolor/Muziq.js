@@ -40,7 +40,7 @@ VKA = {
 		var keys = arsort(sort, 'SORT_NUMERIC');
 		
 		var result = '';
-		for(var j=0; j<Math.min(10,keys.length); j++) {
+		for(var j=0; j<Math.min(20,keys.length); j++) {
 			var d = keys[j];
 			var count = sort[d];
 		    result += '<div class="source" data-title="'+VKA.sources[d][0].title+'" data-duration="'+VKA.sources[d][0].dur+'" data-url="'+VKA.sources[d][0].url+'"><div class="title">'+ VKA.mkTitle(VKA.sources[d][0].title)+'</div><div class="time"> '+mkTime(VKA.sources[d][0].dur)+'</div></div>';
