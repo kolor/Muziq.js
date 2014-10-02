@@ -2,7 +2,7 @@ var LastFm = {
 	query: null,
 	artist: null,
 	title: null,
-	api: 'http://ws.audioscrobbler.com/2.0/?api_key=7f0ae344d4754c175067118a5975ab15&format=json&',
+	api: '//ws.audioscrobbler.com/2.0/?api_key=7f0ae344d4754c175067118a5975ab15&format=json&',
 	
 	found: [],
 	

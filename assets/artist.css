@@ -2,13 +2,15 @@
 #artist-search .artist .info {background:rgba(255, 255, 255, 0.7); bottom:-65px; color:#333333; font-size:18px; font-weight:bold; padding:10px;    position:absolute; text-align:center; text-shadow:0 0 1px #bbb; width:180px;}
 
 #artist-overview > div {-moz-box-sizing: border-box; box-sizing: border-box;}
-.artist-similar {background-color: #444; height: 400px; width: 310px;  overflow: auto;}
-.artist-tracks {background-color: #333338; height: 600px; width: 250px; overflow: auto;}
+.artist-similar {background-color: #444; height: 400px; width: 300px;  overflow: auto;}
 
-.ad {background: url(img/ad.png) no-repeat; cursor: pointer; height: 200px; width: 240px;}
-
-.player {background: #222; width: 310px;height: 200px;}
+.player {background: #222; width: 300px;height: 200px;}
 .cp-container {top: 20px; left: 66px;}
+
+.col1 {width: 300px; float: left;}
+.col2 {float: left; width: 250px;}
+.col3 {float: left; width: 250px;}
+
 
 .artist-info h3 {color: #FFD; text-shadow: 0 0 1px #333; font-size: 21px; border-bottom: 1px solid; margin-bottom: 4px; font-family: Georgia;}
 .artist-info p {font-size: 12px; font-family: arial; color: #bba; line-height: 16px;}
@@ -19,29 +21,36 @@
 .artist-info .links a:hover {border-bottom: 1px dashed;}
 
 
-.artist-tracks .head {background: #333; color: #EEE;padding: 5px; text-align:center; font-size: 13px; font-family: Georgia; font-weight: bold;}
-.artist-tracks .track {padding: 5px; background: #333338; color: #bbb; text-shadow: 0 0 1px #555; border-bottom: 1px solid #555; cursor: pointer; font-family: Verdana; font-size: 12px;}
-.artist-tracks .track:hover {color: #ccc;}
-.artist-tracks .track.selected {background: #AAA; color: #333; text-shadow: 0 0 1px #CCC;}
-.artist-tracks .track i {float: right; font-size: 9px; padding-top: 2px;}
-
 .artist-similar .similar {background-repeat:no-repeat; background-size:cover; float:left;  height:100px;
- width:100px;  overflow: hidden; cursor: pointer;}
+ width:96px;  overflow: hidden; cursor: pointer;}
 .firefox .similar {width: 97px !important; height: 97px !important;}
 .artist-similar .similar div {background: rgba(255, 255, 255, 0.7); text-align: center; font-size: 13px; position: relative; top: -40px; padding: 4px 2px;}
 
+.head {background: #111; height: 15px; color: #EEE;padding: 5px; text-align:center; font-size: 11px; font-family: Georgia; font-weight: bold;}
+
+.artist-tracks, 
+.dc-tracks {background-color: #666; height: 275px; width: 250px; overflow: auto;}
+.artist-tracks .track,
+.dc-tracks .track {padding: 5px; background: #333338; color: #bbb; text-shadow: 0 0 1px #555; border-bottom: 1px solid #555; cursor: pointer; font-family: Verdana; font-size: 11px;}
+.artist-tracks .track:hover,
+.dc-tracks .track:hover {color: #ccc;}
+.artist-tracks .track.selected,
+.dc-tracks .track.selected {background: #AAA; color: #333; text-shadow: 0 0 1px #CCC;}
+.artist-tracks .track i,
+.dc-tracks .track i {float: right; font-size: 9px; padding-top: 2px;}
 
 
-.col1 {width: 310px; float: left;}
-.col2 {float: left; width: 250px;}
-.col3 {float: left; width: 240px;}
+/* track sources  */
+.tracks-sources,
+.dc-albums {background-color: #444; height: 275px; width: 250px;  overflow: auto;}
+.tracks-sources .source,
+.dc-albums .album {color: #333; overflow: hidden; padding: 5px; cursor: pointer; background: #444; font-family: Verdana; border-bottom: 1px solid #555; font-size: 11px; color: #ccc; text-shadow: 0 0 1px #333;}
+.tracks-sources .source:hover,
+.dc-albums .album:hover {color: #ccc;}
+.tracks-sources .source.selected,
+.dc-albums .album.selected {background: #AAA; color: #333; text-shadow: 0 0 1px #CCC;}
 
-/* track sources 3rd column */
-.tracks-sources {background-color: #444; height: 600px; width: 240px;  overflow: auto;}
-.tracks-sources .source {color: #333; overflow: hidden; padding: 5px; cursor: pointer; background: #444; font-family: Verdana; border-bottom: 1px solid #555; font-size: 11px; color: #ccc; text-shadow: 0 0 1px #333;}
-.tracks-sources .source:hover {color: #ccc;}
-.tracks-sources .source.selected {background: #AAA; color: #333; text-shadow: 0 0 1px #CCC;}
-.tracks-sources .source .title {white-space: nowrap; float: left; width: 163px; overflow: hidden; text-overflow: ellipsis; font-size: 12px;}
+.tracks-sources .source .title {white-space: nowrap; float: left; width: 163px; overflow: hidden; text-overflow: ellipsis; font-size: 11px;}
 .tracks-sources .source .time {width: 50px; float: right; text-align: right;}
 
 

@@ -27,7 +27,8 @@ $(function(){
         auth = true;
         VK.Api.call('audio.search', {q: 'spor', sort: 0, count: 10, offset: 0, v: 3, test_mode: 1}, function(r){
             if (typeof r.error != 'undefined' && r.error.error_code == 7)   {
-
+                console.log("shit happend :(");
+                console.log(r.error);
             }
         });
     });
@@ -69,7 +70,7 @@ var Artist_Overview = {
         this.artist = artist;
         this.mbid = mbid;
         $('.artist-similar').addClass('load4');
-        $('.artist-tracks').addClass('load4');
+        $('.artist-tracks').addClass('load6');
         if (mbid == "") {
             LastFm.getTracks(null, artist);
             LastFm.getSimilar(null, artist);
@@ -77,13 +78,13 @@ var Artist_Overview = {
             LastFm.getTracks(mbid);
             LastFm.getSimilar(mbid);    
         }
+        Discogs.findArtist(artist);
         this.getReleases();
-        $('.artist-tracks .track').live('click', function(){
-            $('.artist-tracks .track.selected').removeClass('selected');
+        $('.track').live('click', function(){
+            $('.track.selected').removeClass('selected');
             $(this).addClass('selected');
             VKA.getFiles($(this));
         });
-
         
     },
     
@@ -95,7 +96,7 @@ var Artist_Overview = {
             $(this).find('div').animate({top:-40});
         });
         $('#artist-overview .artist-similar .similar').click(function(){
-            $('#artist-overview .artist-tracks').addClass('load4').empty();
+            $('#artist-overview .artist-tracks').addClass('load6').empty();
             Artist_Overview.artist = $(this).attr('data-artist');
             var mbid = $(this).attr('data-mbid');
             Artist_Overview.getReleases();
@@ -103,8 +104,8 @@ var Artist_Overview = {
                 LastFm.getTracks(null, $(this).attr('data-artist'));
             } else {
                 LastFm.getTracks(mbid);
-                LastFm.getTags(mbid);
             }
+            Discogs.findArtist($(this).attr('data-artist'));
         });
         $('#artist-overview .artist-similar').removeClass('load4');
         
@@ -117,7 +118,7 @@ var Artist_Overview = {
             player.play();
             $('.tracks-sources .source.selected').removeClass('selected');
             $(this).addClass('selected');
-            VK.getBitrate($(this).attr('data-duration'));
+            //VK.getBitrate($(this).attr('data-duration'));
         });
         $('.tracks-sources .source').eq(0).click();
     },
@@ -125,7 +126,7 @@ var Artist_Overview = {
 
     
     initTracks: function(){
-        $('#artist-overview .artist-tracks').removeClass('load4');
+        $('#artist-overview .artist-tracks').removeClass('load6');
     },
     
     getReleases: function(){
