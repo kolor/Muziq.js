@@ -15,16 +15,11 @@ $(function(){
         supplied: "mp3"
     });
 
-$(player.player).bind($.jPlayer.event.play, function(event) { 
-    console.log(event);
-});
-
-
-$(player.player).bind($.jPlayer.event.progress, function(event) { 
-    if (event.jPlayer.status.seekPercent === 100) {
-        $('.tracks-sources .source.selected').addClass('loaded').find('.dl').css({opacity:0.4}).fadeIn();
-    }
-});
+    $(player.player).bind($.jPlayer.event.progress, function(event) { 
+        if (event.jPlayer.status.seekPercent === 100) {
+            $('.tracks-sources .source.selected').addClass('loaded').find('.dl').css({opacity:0.4}).fadeIn();
+        }
+    });
 
     $('#home input').keyup(function(event){
         if (event.keyCode == '13') {
@@ -45,18 +40,24 @@ $(player.player).bind($.jPlayer.event.progress, function(event) {
         }
     })
     
+    
     VK.init({apiId:1902594, nameTransportPath: '/xd_receiver.html', status: true});
     VK.Observer.subscribe('auth.login', function(response) {
         auth = true;
+        console.log("login to vk: OK");
         VK.Api.call('audio.search', {q: 'spor', sort: 0, count: 10, offset: 0, v: 3, test_mode: 1}, function(r){
-            if (typeof r.error != 'undefined' && r.error.error_code == 7)   {
+            if (typeof r.error != 'undefined') {
+                console.log(r.error);
                 auth = false;
-                VK.Auth.login(null, VK.access.AUDIO);
             }
             $('#home').fadeIn("slow");
         });
-    });
-        
+    });    
+
+    setTimeout(function(){
+        $('#home').fadeIn("slow");
+    }, 4000);
+
     
 });
 
