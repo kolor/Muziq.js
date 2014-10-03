@@ -66,12 +66,12 @@
 .artist-tracks, .tracks-sources {height: 290px;}
 
 /* track sources  */
-.tracks-sources .source {overflow: hidden; padding: 0 5px;}
-.tracks-sources .source .title {line-height: 22px; white-space: nowrap; float: left; width: 150px; overflow: hidden; text-overflow: ellipsis; font-size: 11px;}
-.tracks-sources .source .time {line-height: 22px; width: 35px; font-size: 10px; float: right; text-align: right;}
-.tracks-sources .source .dl {padding: 2px 0; opacity:0;}
+.tracks-sources .source {overflow: hidden; padding: 0 5px; height: 27px;}
+.tracks-sources .source .title {line-height: 23px; white-space: nowrap; float: left; width: 150px; overflow: hidden; text-overflow: ellipsis; font-size: 11px;}
+.tracks-sources .source .time {line-height: 23px; width: 35px; font-size: 10px; float: right; text-align: right;}
+.tracks-sources .source .dl {padding: 2px 0; opacity:0.6; display: none;}
 .tracks-sources .source .dl img {width: 20px;}
-.tracks-sources .source.selected .dl {opacity: 1!important;}
+.tracks-sources .source.selected .dl {}
 
 .artist-player .player {background: #0a0a0a; width: 310px; height: 200px; float: left;}
 

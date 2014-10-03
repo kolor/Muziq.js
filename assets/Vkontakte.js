@@ -48,10 +48,14 @@ VKA = {
 		     data-duration="'+VKA.sources[d][0].dur+'" data-url="'+VKA.sources[d][0].url+'">\
 		     <div class="title">'+ VKA.mkTitle(VKA.sources[d][0].title)+'</div>\
 		     <div class="time"> '+mkTime(VKA.sources[d][0].dur)+'</div>\
-		     <div class="dl rt"><a download href="'+VKA.sources[d][0].url+'"><img src="assets/img/download.png"/></a></div></div>';
+		     <div class="dl rt"><a title=Download target=_blank class="dragout" draggable="true" data-downloadurl="audio/mpeg:'+VKA.mkTitle(VKA.sources[d][0].title)+
+		     		'.mp3:'+VKA.sources[d][0].url+'" download href="'+VKA.sources[d][0].url+
+		     		'"><img src="assets/img/download.png"/></a></div></div>';
+		    
 		}	
 		
 		$('.tracks-sources').html(result);
+		$('.dragout').dragout();
 		Artist_Overview.initTrackSources();
 		
 	},

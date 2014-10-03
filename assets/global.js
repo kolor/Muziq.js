@@ -9,11 +9,23 @@ $(function(){
         }
     });
     player = new CirclePlayer("#jquery_jplayer_1", {
-        mp3: "http://airy.me/test.mp3",
+        mp3: "",
     }, {
         cssSelectorAncestor: "#cp_container_1",
         supplied: "mp3"
     });
+
+$(player.player).bind($.jPlayer.event.play, function(event) { 
+    console.log(event);
+});
+
+
+$(player.player).bind($.jPlayer.event.progress, function(event) { 
+    if (event.jPlayer.status.seekPercent === 100) {
+        $('.tracks-sources .source.selected').addClass('loaded').find('.dl').css({opacity:0.4}).fadeIn();
+    }
+});
+
     $('#home input').keyup(function(event){
         if (event.keyCode == '13') {
                 var q = $('#home input').val();
@@ -109,27 +121,41 @@ var Artist_Overview = {
     },
     
     initSimilar: function(self){
-        if (self === true) {
+        if (self === false) {
+            $('#artist-overview .artist-similar .similar').click(function(){
+                Artist_Overview.img = $(this).css('background-image');
+                Artist_Overview.init($(this).attr('data-mbid'), $(this).attr('data-artist'));
+            });
+        }  else {
             $('#artist-overview .artist-similar').prepend('<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.artist + '" style="background-image: '+ this.img +'"><div class="name">'+ this.artist +'</div></div>');    
-        }        
+            $('#artist-overview .artist-similar .similar').click(function(){
+                $('#artist-overview .artist-tracks').addClass('load6').empty();
+                Artist_Overview.artist = $(this).attr('data-artist');
+                var mbid = $(this).attr('data-mbid');
+                Artist_Overview.getReleases();
+                if (mbid == "") {
+                    LastFm.getTracks(null, $(this).attr('data-artist'));
+                } else {
+                    LastFm.getTracks(mbid);
+                }
+                Discogs.findArtist($(this).attr('data-artist'));
+            });
+        }
+
+
+
+
         $('#artist-overview .artist-similar .similar').hover(function(){
             $(this).find('div').animate({top:0});
         }, function(){
             $(this).find('div').animate({top:-40});
         });
-        $('#artist-overview .artist-similar .similar').click(function(){
-            $('#artist-overview .artist-tracks').addClass('load6').empty();
-            Artist_Overview.artist = $(this).attr('data-artist');
-            var mbid = $(this).attr('data-mbid');
-            Artist_Overview.getReleases();
-            if (mbid == "") {
-                LastFm.getTracks(null, $(this).attr('data-artist'));
-            } else {
-                LastFm.getTracks(mbid);
-            }
-            Discogs.findArtist($(this).attr('data-artist'));
-        });
-        $('#artist-overview .artist-similar').removeClass('load4');
+        
+
+
+
+
+        $('#artist-overview .artist-similar').removeClass('load3');
         
     },
     
@@ -147,9 +173,9 @@ var Artist_Overview = {
             e.stopPropagation();
         });
         $('.tracks-sources .source').eq(0).click();
+   
         $('.tracks-sources .source').hover(function(e){
-            console.log(e.currentTarget);
-            $(this).find('div.dl').css({opacity: 0.6},600);
+            $(this).find('div.dl').css({opacity: 0.4},600);
         }, function(){
             $(this).find('div.dl').css({opacity: 0});
         });
@@ -157,8 +183,9 @@ var Artist_Overview = {
             $(this).css({opacity: 1});
             e.stopPropagation();
         }, function(){
-            $(this).css({opacity: 0.6});
+            $(this).css({opacity: 0.4});
         });
+
     },
     
 

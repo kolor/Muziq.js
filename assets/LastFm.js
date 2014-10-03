@@ -27,7 +27,7 @@ var LastFm = {
             result += '<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.name +'" style="background-image: url('+ img +')"><div class="name">'+ this.name +'</div></div>';
         });
         $('#artist-overview .artist-similar').append(result);
-        Artist_Overview.initSimilar();
+        Artist_Overview.initSimilar(false);
     },
 
 	
@@ -84,6 +84,7 @@ var LastFm = {
     
     onGetSimilar: function(e) {
         var result = '';
+         $('#artist-overview .artist-similar').empty();
         $(e.similarartists.artist).each(function(){
             if (typeof this.image != 'undefined') {
                 var img = this.image[2]['#text'];
