@@ -10,7 +10,26 @@ var LastFm = {
 		$.getJSON(this.api+'method=artist.search&artist='+ q.enc() +'&callback=?', LastFm.onGetArtists);	
 	},
 
-	
+	findArtists: function(q) {
+        $('#artist-overview .artist-similar').empty();
+        $.getJSON(this.api+'method=artist.search&artist='+ q.enc() +'&callback=?', LastFm.onFindArtists);    
+    },  
+
+    onFindArtists: function(e) {
+        $('#artist-overview .artist-similar').empty();
+        var result = '';
+        $(e.results.artistmatches.artist).each(function(){
+            if (typeof this.image != 'undefined') {
+                var img = this.image[2]['#text'];
+            } else {
+                var img = '';
+            }
+            result += '<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.name +'" style="background-image: url('+ img +')"><div class="name">'+ this.name +'</div></div>';
+        });
+        $('#artist-overview .artist-similar').append(result);
+        Artist_Overview.initSimilar();
+    },
+
 	
 	onGetArtists: function(e) {
 		var i = 0;

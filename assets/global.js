@@ -1,3 +1,5 @@
+var auth = false;
+
 $(function(){
     $('#home .button').click(function(){
         var q = $('#home input').val();
@@ -12,7 +14,7 @@ $(function(){
         cssSelectorAncestor: "#cp_container_1",
         supplied: "mp3"
     });
-    $('#home input').keydown(function(event){
+    $('#home input').keyup(function(event){
         if (event.keyCode == '13') {
                 var q = $('#home input').val();
             if (q != '') {
@@ -21,6 +23,15 @@ $(function(){
             }
         }
     });
+
+    $('.artist-find input').keyup(function(event){
+        if (event.keyCode == '13') {
+            var q = $(this).val();
+            if (q != '') {
+                Artist_Search.findArtist(q);
+            }
+        }
+    })
     
     VK.init({apiId:1902594, nameTransportPath: '/xd_receiver.html', status: true});
     VK.Observer.subscribe('auth.login', function(response) {
@@ -28,6 +39,7 @@ $(function(){
         VK.Api.call('audio.search', {q: 'spor', sort: 0, count: 10, offset: 0, v: 3, test_mode: 1}, function(r){
             if (typeof r.error != 'undefined' && r.error.error_code == 7)   {
                 console.log("shit happend :(");
+                VK.Auth.login(null, VK.access.AUDIO);
                 console.log(r.error);
             }
         });
@@ -53,9 +65,18 @@ var Artist_Search = {
 	},
 	
 	find: function(q) {
-	    VK.Auth.login(null, VK.access.AUDIO);
+        if (auth === false) {
+            VK.Auth.login(null, VK.access.AUDIO);    
+        }
 	    LastFm.getArtists(q);
-	}
+	},
+
+    findArtist: function(q) {
+        if (auth === false) {
+            VK.Auth.login(null, VK.access.AUDIO);    
+        }
+        LastFm.findArtists(q);  
+    }
 	
 	
 }
@@ -87,8 +108,10 @@ var Artist_Overview = {
         
     },
     
-    initSimilar: function(){
-        $('#artist-overview .artist-similar').prepend('<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.artist + '" style="background-image: '+ this.img +'"><div class="name">'+ this.artist +'</div></div>');
+    initSimilar: function(self){
+        if (self === true) {
+            $('#artist-overview .artist-similar').prepend('<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.artist + '" style="background-image: '+ this.img +'"><div class="name">'+ this.artist +'</div></div>');    
+        }        
         $('#artist-overview .artist-similar .similar').hover(function(){
             $(this).find('div').animate({top:0});
         }, function(){

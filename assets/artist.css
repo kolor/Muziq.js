@@ -2,9 +2,11 @@
 #artist-search .artist .info {background:rgba(255, 255, 255, 0.7); bottom:-65px; color:#333333; font-size:18px; font-weight:bold; padding:10px;    position:absolute; text-align:center; text-shadow:0 0 1px #bbb; width:180px;}
 
 #artist-overview > div {-moz-box-sizing: border-box; box-sizing: border-box;}
-.artist-similar {background-color: #0a0a0a; height: 400px; width: 300px;  overflow: auto;}
+.artist-similar {background-color: #333338; height: 400px; width: 300px;  overflow: auto;}
 
-.player {background: #0a0a0a; width: 300px;height: 214px;}
+.artist-find input {font-size: 14px; padding: 7px; width: 100%;}
+
+.player {background: #0a0a0a; width: 300px;height: 180px;}
 .cp-container {top: 20px; left: 66px;}
 
 .col1 {width: 300px; float: left;}
@@ -33,7 +35,7 @@
 .artist-tracks,
 .tracks-sources,
 .dc-albums,
-.dc-tracks {background-color: #333338; height: 275px; width: 250px; overflow: auto;}
+.dc-tracks {background-color: #333338; height: 275px; width: 250px; overflow: auto; border-left: 1px solid #111;}
 
 
 .dc-albums {background-color: #444;}
