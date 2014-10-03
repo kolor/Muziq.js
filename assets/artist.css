@@ -6,7 +6,7 @@
 
 .artist-find input {font-size: 14px; padding: 7px; width: 100%;}
 
-.player {background: #0a0a0a; width: 300px;height: 180px;}
+.player {background: #0a0a0a; width: 300px;height: 172px;}
 .cp-container {top: 20px; left: 66px;}
 
 .col1 {width: 300px; float: left;}
@@ -46,7 +46,7 @@
 .tracks-sources .source,
 .artist-tracks .track {padding: 6px 4px; background: #222;  color: #bbb; text-shadow: 0 0 1px #000; 
 	border-bottom: 1px solid black; border-top: 1px solid #333333; cursor: pointer; font-family: Verdana; 
-	font-size: 11px; line-height: 15px;}
+	font-size: 11px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 
 .dc-tracks .track:hover,
@@ -63,13 +63,13 @@
 .dc-tracks .track i {float: right; font-size: 9px; padding-top: 2px;}
 
 
-.artist-tracks, .tracks-sources {height: 290px;}
+.artist-tracks, .tracks-sources {height: 280px;}
 
 /* track sources  */
-.tracks-sources .source {overflow: hidden; padding: 0 5px; height: 27px;}
-.tracks-sources .source .title {line-height: 23px; white-space: nowrap; float: left; width: 150px; overflow: hidden; text-overflow: ellipsis; font-size: 11px;}
+.tracks-sources .source {overflow: hidden; padding: 0 5px; height: 29px;}
+.tracks-sources .source .title {line-height: 23px; white-space: nowrap; float: left; width: 182px; overflow: hidden; text-overflow: ellipsis; font-size: 11px;}
 .tracks-sources .source .time {line-height: 23px; width: 35px; font-size: 10px; float: right; text-align: right;}
-.tracks-sources .source .dl {padding: 2px 0; opacity:0.6; display: none;}
+.tracks-sources .source .dl {padding: 2px 0; opacity:0.6; display: none; line-height: 34px;}
 .tracks-sources .source .dl img {width: 20px;}
 .tracks-sources .source.selected .dl {}
 

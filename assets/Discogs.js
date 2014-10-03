@@ -40,7 +40,17 @@ var Discogs = {
                 if (typeof this.year === undefined) {
                     this.year = "";
                 }
-                results += "<div class='album' data-title='"+this.title+"' data-url='"+this.resource_url+"' data-id='"+this.id+"' data-year='"+this.year+"'>"+this.title+" ("+this.year+")</div>";                
+                if (this.title.length > 34) {
+                   var str =  "<div class='album' data-title='"+this.title+
+                    "' data-url='"+this.resource_url+"' data-id='"+this.id+
+                    "' data-year='"+this.year+"'><marquee scrolldelay=200 direction=left behavior=alternate>"+
+                    this.title+" ("+this.year+")</marquee></div>";                
+                } else {
+                    var str = "<div class='album' data-title='"+this.title+
+                    "' data-url='"+this.resource_url+"' data-id='"+this.id+
+                    "' data-year='"+this.year+"'>"+this.title+" ("+this.year+")</div>";                
+                }
+                results += str;
             }            
         });
         
