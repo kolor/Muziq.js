@@ -17,6 +17,7 @@ VKA = {
 			VKALogin();
 			return;
 		}
+		$('.tracks-sources').empty();
 		var total = data.response[0];
 		var sort = new Array();
 		VKA.sources = [];
@@ -43,7 +44,11 @@ VKA = {
 		for(var j=0; j<Math.min(20,keys.length); j++) {
 			var d = keys[j];
 			var count = sort[d];
-		    result += '<div class="source" data-title="'+VKA.sources[d][0].title+'" data-duration="'+VKA.sources[d][0].dur+'" data-url="'+VKA.sources[d][0].url+'"><div class="title">'+ VKA.mkTitle(VKA.sources[d][0].title)+'</div><div class="time"> '+mkTime(VKA.sources[d][0].dur)+'</div></div>';
+		    result += '<div class="source" data-title="'+VKA.sources[d][0].title+'"\
+		     data-duration="'+VKA.sources[d][0].dur+'" data-url="'+VKA.sources[d][0].url+'">\
+		     <div class="title">'+ VKA.mkTitle(VKA.sources[d][0].title)+'</div>\
+		     <div class="time"> '+mkTime(VKA.sources[d][0].dur)+'</div>\
+		     <div class="dl rt"><a download href="'+VKA.sources[d][0].url+'"><img src="assets/img/download.png"/></a></div></div>';
 		}	
 		
 		$('.tracks-sources').html(result);

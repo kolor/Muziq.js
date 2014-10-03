@@ -69,7 +69,6 @@ var Artist_Overview = {
     init: function(mbid, artist){
         this.artist = artist;
         this.mbid = mbid;
-        $('.artist-similar').addClass('load4');
         $('.artist-tracks').addClass('load6');
         if (mbid == "") {
             LastFm.getTracks(null, artist);
@@ -113,14 +112,30 @@ var Artist_Overview = {
     
    initTrackSources: function() {
         $('.tracks-sources').removeClass('load3');
-        $('.tracks-sources .source').click(function(){
+        $('.tracks-sources .source').click(function(e){
+
             player.setMedia({'mp3':$(this).attr('data-url')});
             player.play();
             $('.tracks-sources .source.selected').removeClass('selected');
             $(this).addClass('selected');
             //VK.getBitrate($(this).attr('data-duration'));
         });
+        $('.tracks-sources .source a').click(function(e){
+            e.stopPropagation();
+        });
         $('.tracks-sources .source').eq(0).click();
+        $('.tracks-sources .source').hover(function(e){
+            console.log(e.currentTarget);
+            $(this).find('div.dl').css({opacity: 0.6},600);
+        }, function(){
+            $(this).find('div.dl').css({opacity: 0});
+        });
+        $('.tracks-sources div.dl').hover(function(e){
+            $(this).css({opacity: 1});
+            e.stopPropagation();
+        }, function(){
+            $(this).css({opacity: 0.6});
+        });
     },
     
 
