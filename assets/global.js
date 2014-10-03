@@ -50,10 +50,10 @@ $(player.player).bind($.jPlayer.event.progress, function(event) {
         auth = true;
         VK.Api.call('audio.search', {q: 'spor', sort: 0, count: 10, offset: 0, v: 3, test_mode: 1}, function(r){
             if (typeof r.error != 'undefined' && r.error.error_code == 7)   {
-                console.log("shit happend :(");
+                auth = false;
                 VK.Auth.login(null, VK.access.AUDIO);
-                console.log(r.error);
             }
+            $('#home').fadeIn("slow");
         });
     });
         

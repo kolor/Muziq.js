@@ -1,5 +1,5 @@
 html {background: black;}
-body {background: white; height: 600px; width: 800px;}
+body {background: black; height: 600px; width: 800px;}
 body > div.view {background: white; width: 800px; height: 600px; position: fixed; background: black; left: -800px;}
 body > div#home {left: 0;}
 
