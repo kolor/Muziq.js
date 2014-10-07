@@ -46,7 +46,7 @@
 .tracks-sources .source,
 .artist-tracks .track {padding: 6px 4px; background: #222;  color: #bbb; text-shadow: 0 0 1px #000; 
 	border-bottom: 1px solid black; border-top: 1px solid #333333; cursor: pointer; font-family: Verdana; 
-	font-size: 11px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+	font-size: 11px; height:15px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 
 .dc-tracks .track:hover,

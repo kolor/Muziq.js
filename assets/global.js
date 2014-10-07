@@ -8,6 +8,14 @@ $(function(){
             goToView('home','artist-search');
         }
     });
+
+
+    $('#home input, #home .button').hover(function(e){
+        $('#home .button').animate({opacity: 0.9},600);
+    }, function(){
+        $('#home .button').css({opacity: 0.4});
+    });
+
     player = new CirclePlayer("#jquery_jplayer_1", {
         mp3: "",
     }, {

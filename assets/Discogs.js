@@ -40,7 +40,7 @@ var Discogs = {
                 if (typeof this.year === undefined) {
                     this.year = "";
                 }
-                if (this.title.length > 34) {
+                if (this.title.length > 44) {
                    var str =  "<div class='album' data-title='"+this.title+
                     "' data-url='"+this.resource_url+"' data-id='"+this.id+
                     "' data-year='"+this.year+"'><marquee scrolldelay=200 direction=left behavior=alternate>"+
@@ -80,8 +80,8 @@ var Discogs = {
         Artist_Overview.initTracks();
     },
     
-    sortAlpha: function(a,b) {  
-        return $(a).data('year') > $(b).data('year') ? 1 : -1;  
+    sortYear: function(a,b) {  
+        return $(a).data('year') < $(b).data('year') ? 1 : -1;  
     }  
    
 }
