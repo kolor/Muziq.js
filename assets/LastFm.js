@@ -19,10 +19,10 @@ var LastFm = {
         $('#artist-overview .artist-similar').empty();
         var result = '';
         $(e.results.artistmatches.artist).each(function(){
-            if (typeof this.image != 'undefined') {
-                var img = this.image[2]['#text'];
+            if (defined(this.image) && !empty(this.image[4]['#text'])) {
+                var img = this.image[4]['#text'];
             } else {
-                var img = '';
+                var img = img2 = 'http://i.imgur.com/1jdKzpw.png';
             }
             result += '<div class="similar" data-mbid="'+ this.mbid +'" data-artist="'+ this.name +'" style="background-image: url('+ img +')"><div class="name">'+ this.name +'</div></div>';
         });
@@ -32,15 +32,22 @@ var LastFm = {
 
 	
 	onGetArtists: function(e) {
+        if (!defined(e.results.artistmatches.artist) || empty(e.results.artistmatches.artist)) {
+            setTimeout(function(){
+                $('#home input').css({borderColor:'red'});
+                goToView('artist-search','home');
+            },1000);            
+            return;
+        }
 		var i = 0;
 		var result = '';
 		$(e.results.artistmatches.artist).each(function(){
 			if (++i > 12) return false;
-			if (typeof this.image != 'undefined') {
-				var img = this.image[4]['#text'];
-			} else {
-				var img = img2 = '';
-			}
+            if (defined(this.image) && !empty(this.image[4]['#text'])) {
+                var img = this.image[4]['#text'];
+            } else {
+                var img = img2 = 'http://i.imgur.com/1jdKzpw.png';
+            }
 			var name = this.name;
 			var url = this.url;
 			result += '<div class="artist" data-mbid="'+this.mbid+'" data-artist="'+name+'" data-img="'+img+'" style="background-image: url('+img+')"><div class="info">'+name+'</div></div>';

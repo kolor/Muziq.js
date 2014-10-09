@@ -13,11 +13,17 @@ VKA = {
 	},
     	
 	onGetFiles: function(data) {
-		if (typeof data.error != 'undefined') {
-			VKALogin();
+		if (defined(data.error)) {
+			console.warn("VK error received", data.error);
+			auth = false;
+			VK.Auth.login(null, VK.access.AUDIO);   
 			return;
 		}
 		$('.tracks-sources').empty();
+		if (!defined(data.response) || empty(data.response) || data.response[0] == 0) {
+			$('.track.selected').addClass('missing').next().click();
+			return;
+		}
 		var total = data.response[0];
 		var sort = new Array();
 		VKA.sources = [];
@@ -40,6 +46,10 @@ VKA = {
 		}
 		var keys = arsort(sort, 'SORT_NUMERIC');
 		
+		if (empty(VKA.sources)) {
+			$('.track.selected').addClass('missing').next().click();
+			return;
+		}
 		var result = '';
 		for(var j=0; j<Math.min(20,keys.length); j++) {
 			var d = keys[j];

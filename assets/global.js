@@ -34,7 +34,6 @@ $(function(){
                 var q = $('#home input').val();
             if (q != '') {
                 Artist_Search.find(q);
-                goToView('home','artist-search');
             }
         }
     });
@@ -54,7 +53,7 @@ $(function(){
         auth = true;
         console.log("login to vk: OK");
         VK.Api.call('audio.search', {q: 'spor', sort: 0, count: 10, offset: 0, v: 3, test_mode: 1}, function(r){
-            if (typeof r.error != 'undefined') {
+            if (defined(r.error)) {
                 console.log(r.error);
                 auth = false;
             }
@@ -64,7 +63,7 @@ $(function(){
 
     setTimeout(function(){
         $('#home').fadeIn("slow");
-    }, 4000);
+    }, 2500);
 
     
 });
@@ -89,6 +88,7 @@ var Artist_Search = {
         if (auth === false) {
             VK.Auth.login(null, VK.access.AUDIO);    
         }
+        goToView('home','artist-search');
 	    LastFm.getArtists(q);
 	},
 
@@ -123,7 +123,7 @@ var Artist_Overview = {
         this.getReleases();
         $('.track').live('click', function(){
             $('.track.selected').removeClass('selected');
-            $(this).addClass('selected');
+            $(this).addClass('selected').addClass('played');
             VKA.getFiles($(this));
         });
         
