@@ -16,6 +16,10 @@ var Discogs = {
     onFindArtist: function(e) {
 
         var data = e.data;
+        if (empty(data.results)) {
+            $('.dc-albums').removeClass('load4');
+            return;
+        }
         $(data.results).each(function(){
             if (lc(this.title).indexOf(lc(Discogs.artist))>-1  &&   this.thumb !== "") {
                 Discogs.artistUrl = this.resource_url;
