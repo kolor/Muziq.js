@@ -10,37 +10,45 @@ var Discogs = {
         this.artistUrl = null;
         q = encodeURIComponent(q);
         $('.dc-albums').empty().addClass('load4');
-        $.getJSON(this.api+'database/search?type=artist&q='+q+'&callback=?', Discogs.onFindArtist);    
+        //$.getJSON(this.api+'database/search?type=artist&q='+q+'&callback=?', Discogs.onFindArtist);    
+        $.get('dc.php?q='+q, Discogs.onFindArtist);
     },
 
-    onFindArtist: function(e) {
-
-        var data = e.data;
-        if (empty(data.results)) {
-            $('.dc-albums').removeClass('load4');
-            return;
-        }
-        $(data.results).each(function(){
-            if (lc(this.title).indexOf(lc(Discogs.artist))>-1  &&   this.thumb !== "") {
-                Discogs.artistUrl = this.resource_url;
-                return false;
-            }
-        });
-        if (Discogs.artistUrl !== null) {
-            $.getJSON(Discogs.artistUrl+'/releases?per_page=100&callback=?', Discogs.onGetReleases);    
+    onFindArtist: function(html) {
+            //var id = $(html).find('div.card').eq(0).data('object-id');
+        var id = null;
+        $(html).find('div.card').each(function(k,v){
+           var img = $(v).find('.card_image img').attr('src');
+           var txt = $(v).find('.card_body h4 a').text();
+           if (img !== "http://s.pixogs.com/images/default-artist.png") {
+                if (txt.indexOf(Discogs.artist) > -1) {
+                    id = $(v).data('object-id');
+                    return false;
+                }
+           }
+        })
+        
+        if (defined(id)) {
+            $.getJSON(Discogs.api+'artists/'+id+'/releases?per_page=100&callback=?', Discogs.onGetReleases);
         } else {
-            $.getJSON(data.results[0].resource_url+'/releases?per_page=100&callback=?', Discogs.onGetReleases);    
+            $('.dc-albums').removeClass('load4');
         }
     },
 
 
     
     onGetReleases: function(e) {
+        var s = Discogs;
         var results = '';
 		var data = e.data;
+        s.found = [];
         data.releases.reverse();
         $(data.releases).each(function(){
             if (this.role === "Main") {
+                if (s.found.indexOf(this.title) > -1) {
+                    return true;
+                }
+                s.found.push(this.title);
                 if (typeof this.year === undefined) {
                     this.year = "";
                 }
