@@ -57,6 +57,7 @@ var LastFm = {
 	},
 	
 	getTracks: function(mbid, artist) {  
+        LastFm.artist = artist;
 	    if (mbid == null) {
 	        $.getJSON(this.api+'method=artist.gettoptracks&artist='+ artist.enc() +'&autocorrect=1&limit=50&callback=?', LastFm.onGetTracks);
 	    } else {
@@ -74,9 +75,30 @@ var LastFm = {
                 result += "<div class='track' data-artist='"+ this.artist.name +"' data-title='"+ title +"'>"+ cap(title) +"<i>"+ this.playcount +"</i></div>";       
                 LastFm.found.push(title);
             }           
-            $('#artist-overview .artist-tracks').html(result);
         });
-        Artist_Overview.initTracks();
+        if (LastFm.found.length === 0) {
+            $.get('lf.php?q='+LastFm.artist.enc(), LastFm.onGetCharts);
+        } else {
+            $('#artist-overview .artist-tracks').html(result);
+            Artist_Overview.initTracks();    
+        }
+        
+    },
+
+    onGetCharts: function(html) {
+        LastFm.found = [];
+        var result = '';
+        var div = $(html).find('div.module-body.chart.current');
+        div.find('table tr').each(function(k,v){
+            var title = LastFm.cleanTrackName($(v).find('td.subjectCell a').text());
+            if (!in_array(title, LastFm.found)) {
+                result += "<div class='track' data-artist='"+ LastFm.artist +"' data-title='"+ title +"'>"+ cap(title) +"</div>";       
+                LastFm.found.push(title);
+            } 
+        });
+        if (LastFm.found.length > 0) {
+            $('#artist-overview .artist-tracks').html(result);
+        }
     },
     
     
@@ -106,7 +128,7 @@ var LastFm = {
     
 	cleanTrackName: function(str) {
         str = trimBrackets(str);
-        str = str.replace(/[\w]+ (remix|mix|rmx|edit).*/gi,''); // remove (this), 1 word before and everything after
+        str = str.replace(/(remix|mix|rmx|edit).*/gi,''); // remove (this), 1 word before and everything after
         str = str.replace(/( feat| ft\.| vocals by| vip).*/gi,''); // remove (this) and everything after
         str = str.replace(/(full version|remix|remi| mix|rmx| edit)/gi,''); //remove (this)
         str = str.replace(/(mp3|wav|flac|ogg)/gi,'');
