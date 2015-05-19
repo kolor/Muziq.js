@@ -27,6 +27,7 @@ List = {
 	},
 
 	import: function(){
+		if (!defined(List.data)||empty(List.data)||Object.keys(List.data).length===0) return;
 		$('.playlist #accordian').html('<ul/>');
 		var ul = $('.playlist ul');
 		var i = 0;
@@ -50,7 +51,7 @@ List = {
 	},
 
 	load: function(){
-		List.data = JSON.parse(localStorage.getItem('muziq.lists'));
+		List.data = JSON.parse(localStorage.getItem('muziq.lists')) || {};
 	}
 
 

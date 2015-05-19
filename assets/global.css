@@ -37,6 +37,8 @@ body > div#home {left: 0;}
 #accordian h3 {
 	font-family: 'Roboto Condensed'; font-size: 12px; line-height:28px; padding: 0 10px; cursor: pointer;
 	background: #0E2130; border-bottom: 1px solid #04151F; }
+#accordian h3.open {
+	background: #0E3027; }
 #accordian h3:hover {
 	text-shadow: 0 0 1px rgba(0, 0, 0, 0.7); }
 /*iconfont styles*/

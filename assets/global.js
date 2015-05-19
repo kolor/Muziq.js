@@ -75,14 +75,17 @@ function setup_playlist() {
 	List.import();
 
 	$("#accordian").on('click','h3',function(){
+		$('#accordian h3').removeClass('open');
 		$("#accordian ul ul").slideUp();
 		if(!$(this).next().is(":visible")) {
 			$(this).next().slideDown();
+			$(this).addClass('open');
 		}
 	});
 	$("#accordian").on('contextmenu',"h3",function(e){
 		e.preventDefault();
 		$(this).prop('contenteditable','true');
+		$(this).focus();
 		return false;
 	});
 	$('#accordian').on('keydown','h3',function(e){
