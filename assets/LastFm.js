@@ -79,7 +79,7 @@ var LastFm = {
         if (LastFm.found.length === 0) {
             $.get('lf.php?q='+LastFm.artist.enc(), LastFm.onGetCharts);
         } else {
-            $('#artist-overview .artist-tracks').html(result);
+            $('#artist-overview .dc-tracks').html(result);
             Artist_Overview.initTracks();    
         }
         
@@ -97,7 +97,7 @@ var LastFm = {
             } 
         });
         if (LastFm.found.length > 0) {
-            $('#artist-overview .artist-tracks').html(result);
+            $('#artist-overview .dc-tracks').html(result);
         }
     },
     

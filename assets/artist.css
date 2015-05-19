@@ -4,68 +4,70 @@
 #artist-overview > div {-moz-box-sizing: border-box; box-sizing: border-box;}
 .artist-similar {background-color: #333338; height: 400px; width: 300px;  overflow: auto;}
 
-.artist-find input {font-size: 14px; padding: 7px; width: 100%;}
+.artist-find input {
+	font-size: 13px; padding: 4px; width: 290px; }
 
-.player {background: #0a0a0a; width: 300px;height: 172px;}
-.cp-container {top: 20px; left: 66px;}
+.player {
+	background: #0a0a0a; width: 300px;height: 170px;}
+.cp-container {
+	top: 10px; left: 66px;}
 
 .col1 {width: 300px; float: left;}
 .col2 {float: left; width: 250px;}
 .col3 {float: left; width: 250px;}
 
 
-.artist-info h3 {color: #FFD; text-shadow: 0 0 1px #333; font-size: 21px; border-bottom: 1px solid; margin-bottom: 4px; font-family: Georgia;}
-.artist-info p {font-size: 12px; font-family: arial; color: #bba; line-height: 16px;}
+.artist-info h3 {color: #FFD; text-shadow: 0 0 1px #333; font-size: 21px; border-bottom: 1px solid; margin-bottom: 4px; font-family: 'Roboto Condensed';}
+.artist-info p {font-size: 12px; font-family: 'Roboto Condensed'; color: #bba; line-height: 16px;}
 .artist-info .tags span {margin-right: 10px; color: #CC9; padding: 2px 0px; cursor: pointer; font-size: 13px; font-family: monospace;}
 .artist-info .tags span:hover {border-bottom: 1px dashed;}
 .artist-info .links {color: #ddd; margin: 10px 0 0; position: absolute; bottom: 6px; font-size: 14px; font-family: Arial;}
 .artist-info .links a {margin-right: 10px; cursor: pointer;}
-.artist-info .links a:hover {border-bottom: 1px dashed;}
+.artist-info .links a:hover {
+	border-bottom: 1px dashed;}
 
 
-.artist-similar .similar {background-repeat:no-repeat; background-size:cover; float:left;  height:100px;
- width:96px;  overflow: hidden; cursor: pointer;}
-.firefox .similar {width: 97px !important; height: 97px !important;}
-.artist-similar .similar div {background: rgba(255, 255, 255, 0.7); text-align: center; font-size: 13px; position: relative; top: -40px; padding: 4px 2px;}
-
-.head {background: #111; height: 15px; color: #EEE;padding: 5px; text-align:center; font-size: 11px; 
-	font-family: Georgia; font-weight: bold; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-
-
-.artist-tracks,
-.tracks-sources,
-.dc-albums,
-.dc-tracks {background-color: #333338; height: 275px; width: 250px; overflow: auto; border-left: 1px solid #111;}
+.artist-similar .similar {
+	background-repeat:no-repeat; background-size:cover; float:left; height:100px; width:97px; overflow: hidden; 
+	cursor: pointer;}
+.firefox .similar {
+	width: 97px !important; height: 97px !important;}
+.artist-similar .similar div {
+	background: rgba(255, 255, 255, 0.7); text-align: center; font-size: 13px; position: relative; top: -40px;
+	padding: 4px 2px;}
+.head {
+	background: #111; color: #EEE;padding: 5px; text-align:center; font-size: 12px; font-family: 'Roboto Condensed';
+	font-weight: bold; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 
 
-.dc-albums {background-color: #444;}
-.artist-tracks {background-color: #666;}
+.artist-tracks, .tracks-sources, .dc-albums, .dc-tracks {
+	background-color: #2A2A2A; height: 275px; width: 250px; overflow: auto; border-left: 1px solid #111;}
+.dc-albums {
+	background-color: #444;}
+.playlist {
+	background-color: #333338; border-left: 1px solid #000;}
 
-.dc-albums .album,
-.dc-tracks .track,
-.tracks-sources .source,
-.artist-tracks .track {padding: 6px 4px; background: #222;  color: #bbb; text-shadow: 0 0 1px #000; 
-	border-bottom: 1px solid black; border-top: 1px solid #333333; cursor: pointer; font-family: Verdana; 
-	font-size: 11px; height:15px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-
+.dc-albums .album, .dc-tracks .track, .tracks-sources .source, .playlist .track {
+	padding: 6px 4px; background: #222;  color: #bbb; text-shadow: 0 0 1px #000; border-bottom: 1px solid black; 
+	border-top: 1px solid #333333; cursor: pointer; font-family: 'Roboto Condensed'; font-size: 11px; height:15px;
+	line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
 
 .dc-tracks .track:hover,
 .dc-albums .album:hover,
 .tracks-sources .source:hover,
-.artist-tracks .track:hover {color: #ccc;}
+.playlist .list:hover {color: #ccc;}
 
-.artist-tracks .track.selected,
+.playlist .list.selected,
 .tracks-sources .source.selected,
 .dc-albums .album.selected,
 .dc-tracks .track.selected {background: #333; color: #FFF; text-shadow: 0 0 1px #000; border-bottom: 1px solid black; border-top: 1px solid #444;}
 
-.artist-tracks .track i,
 .dc-tracks .track i {float: right; font-size: 9px; padding-top: 2px;}
 
 .track.missing {text-decoration: line-through !important; color: #555;}
 .track.played {color: #888;}
 
-.artist-tracks, .tracks-sources {height: 280px;}
+.playlist, .tracks-sources {height: 275px; overflow-y: auto; overflow-x: hidden;}
 
 /* track sources  */
 .tracks-sources .source {overflow: hidden; padding: 0 5px; height: 27px;}

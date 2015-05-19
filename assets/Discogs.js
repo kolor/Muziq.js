@@ -48,7 +48,7 @@ var Discogs = {
 	onGetReleases: function(e) {
 		var s = Discogs;
 		s.found = [];
-		var results = '';
+		var results = "<div class='album' data-title='Top Tracks' data-id='0'>Top Tracks</div>";
 		var data = e.data;
 
 		data.releases.reverse();
@@ -72,10 +72,19 @@ var Discogs = {
 		$('#artist-overview .dc-albums .album').click(function(){
 			$('.dc-albums .album.selected').removeClass('selected');
 			$(this).addClass('selected');
-			$('.col3 .head').eq(0).text($(this).data('title'));
+			$('.col2 .head').eq(0).text($(this).data('title'));
 			$('.dc-tracks').html('');
-			var url = $(this).data('url');
-			Discogs.getTracks(url);
+			if ($(this).data('id')=='0') {
+				if (Artist_Overview.mbid == "") {
+				    LastFm.getTracks(null, Artist_Overview.artist);
+				} else {
+				    LastFm.getTracks(Artist_Overview.mbid);
+				}
+			} else {
+				var url = $(this).data('url');
+				Discogs.getTracks(url);	
+			}
+			
 		});
 		$('.dc-albums').removeClass('load4');
 	},

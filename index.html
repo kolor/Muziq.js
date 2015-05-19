@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="assets/global.css">
 		<link rel="stylesheet" href="assets/artist.css">
 		<link rel="stylesheet" href="libs/jplayer/skin/circle.player.css">  
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<div id="home" class="view hide">
@@ -17,7 +18,7 @@
 		<div id="artist-overview" class="view">
 			<div class="col1">
 				<div class="artist-find">
-					<input type="text"/ placeholder="search by pressing enter">
+					<input type="text"/ placeholder="input artist name and press enter to search">
 				</div>
 				<div class="artist-similar"></div>
 				<div class="player">
@@ -44,15 +45,29 @@
 				<div class="head">Albums</div>
 				<div class="dc-albums"></div>
 				<div class="head">Top Tracks</div>
-				<div class="artist-tracks"></div>
-
-
+				<div class="dc-tracks"></div>
 			</div>
 			<div class="col3">
-				<div class="head">Album Tracks</div>
-				<div class="dc-tracks"></div>
 				<div class="head">Remixes</div>
 				<div class="tracks-sources"></div>
+				<div class="head">Playlists</div>
+				<div class="playlist">
+					<div id="accordian">
+						<ul>
+							<li>
+								<h3>Playlist 1</h3>
+								<ul>
+									<div class="track" data-artist="Spor" data-title="Like Clockwork">Like Clockwork</div>
+									<div class="track" data-artist="Spor" data-title="Aztec">Aztec</div>
+								</ul>
+							</li>
+							<li>
+								<h3>Playlist 2</h3>
+								<ul></ul>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			
 			
@@ -75,6 +90,7 @@
 		<script src="assets/LastFm.js?v=2"></script>
 		<script src="assets/Vkontakte.js?v=2"></script>
 		<script src="assets/Discogs.js?v=2"></script>
+		<script src="assets/Playlist.js?v=2"></script>
 		
 		<script src="assets/global.js?v=2"></script>
 	</body>

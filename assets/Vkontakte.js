@@ -6,8 +6,8 @@ VKA = {
 	durs: [],
 	
 	getFiles: function(t) {
-		this.artist = t.attr('data-artist');
-		this.title = t.attr('data-title'); 
+		this.artist = t.data('artist');
+		this.title = t.data('title'); 
 		var q = this.artist+' '+this.title;
         VK.Api.call('audio.search', {q: q, sort: 2, count: 200, offset: 0}, VKA.onGetFiles);
 	},
@@ -86,7 +86,7 @@ VKA = {
 	getBitrateInfo: function(el) {
 		var loader = new air.URLLoader();
 		loader.addEventListener(air.ProgressEvent.PROGRESS, onGetBitrateProgress);
-		loader.load(new air.URLRequest($(el).attr('data-url')));
+		loader.load(new air.URLRequest($(el).data('url')));
 		function onGetBitrateProgress(e) {
 			var d = el.attr('data-duration');
 			var s = e.bytesTotal;
