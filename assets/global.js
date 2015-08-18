@@ -200,7 +200,7 @@ var Artist_Overview = {
 		$('#artist-overview .artist-similar .similar').hover(function(){
 			$(this).find('div').animate({top:0});
 		}, function(){
-			$(this).find('div').animate({top:-40});
+			$(this).find('div').animate({top:-55});
 		});
 		$('#artist-overview .artist-similar').removeClass('load3');
 		

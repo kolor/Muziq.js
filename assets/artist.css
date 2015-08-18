@@ -5,10 +5,13 @@
 .artist-similar {background-color: #333338; height: 400px; width: 300px;  overflow: auto;}
 
 .artist-find input {
-	font-size: 13px; padding: 4px; width: 290px; }
+	font-size: 12px; padding: 4px 6px; width: 290px; background-color: #222; border: 0px; color: #aaa;
+    font-family: 'Roboto Condensed'; }
+.artist-find input:focus {
+	outline: none; }
 
 .player {
-	background: #0a0a0a; width: 300px;height: 170px;}
+	background: #0a0a0a; width: 300px;height: 160px;}
 .cp-container {
 	top: 10px; left: 66px;}
 
@@ -33,7 +36,7 @@
 .firefox .similar {
 	width: 97px !important; height: 97px !important;}
 .artist-similar .similar div {
-	background: rgba(255, 255, 255, 0.7); text-align: center; font-size: 13px; position: relative; top: -40px;
+	background: rgba(255, 255, 255, 0.7); text-align: center; font-size: 13px; position: relative; top: -55px;
 	padding: 4px 2px;}
 .head {
 	background: #111; color: #EEE;padding: 5px; text-align:center; font-size: 12px; font-family: 'Roboto Condensed';
@@ -41,7 +44,7 @@
 
 
 .artist-tracks, .tracks-sources, .dc-albums, .dc-tracks {
-	background-color: #2A2A2A; height: 275px; width: 250px; overflow: auto; border-left: 1px solid #111;}
+	background-color: #2A2A2A; height: 268px; width: 250px; overflow: auto; border-left: 1px solid #111;}
 .dc-albums {
 	background-color: #444;}
 .playlist {
@@ -67,7 +70,7 @@
 .track.missing {text-decoration: line-through !important; color: #555;}
 .track.played {color: #888;}
 
-.playlist, .tracks-sources {height: 275px; overflow-y: auto; overflow-x: hidden;}
+.playlist, .tracks-sources {height: 268px; overflow-y: auto; overflow-x: hidden;}
 
 /* track sources  */
 .tracks-sources .source {overflow: hidden; padding: 0 5px; height: 27px;}
