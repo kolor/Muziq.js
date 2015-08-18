@@ -72,7 +72,7 @@ var Discogs = {
 		$('#artist-overview .dc-albums .album').click(function(){
 			$('.dc-albums .album.selected').removeClass('selected');
 			$(this).addClass('selected');
-			$('.col2 .head').eq(0).text($(this).data('title'));
+			$('.col2 .head.alb').eq(0).text($(this).data('title'));
 			$('.dc-tracks').html('');
 			if ($(this).data('id')=='0') {
 				if (Artist_Overview.mbid == "") {
