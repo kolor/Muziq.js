@@ -11,7 +11,9 @@ body > div#home {left: 0;}
 
 
 
-
+#accordian h5 {
+	font-variant: small-caps; text-transform: lowercase; text-align: center; padding: 6px;
+	background: #222; font-family: 'Roboto Condensed'; font-size: 14px; }
 
 #home input {border: 8px solid #1C303A; font-size:32px; left:210px; padding:8px 10px; position:absolute; top:240px; width:400px;}
 #home div.button {background:url("img/magnifier.png") no-repeat; height:60px; width:60px; position: absolute; 

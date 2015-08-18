@@ -100,10 +100,19 @@ function setup_playlist() {
 		List.add($(this));
 		return false;
 	});
+	
 	$('.playlist').on('contextmenu', '.track', function(e){
 		$(this).remove();
 		List.export();
 		return false;
+	});
+	$('.playlist').dblclick(function(e){
+		var tot = $(this).find('li').size();
+		if (tot < 1) {
+			$(this).find('#accordian > ul').empty().append('<li><h3>New Playlist</h3><ul class="list list1"></ul></li>');
+		} else {
+			$(this).find('#accordian > ul').append('<li><h3>New Playlist</h3><ul class="list list'+ (tot+1) +'"></ul></li>');
+		}
 	});
 }
 

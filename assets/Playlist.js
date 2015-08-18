@@ -51,8 +51,12 @@ List = {
 	},
 
 	load: function(){
-		List.data = JSON.parse(localStorage.getItem('muziq.lists')) || {};
+		var json = localStorage.getItem('muziq.lists');
+		if (!empty(json)) {
+			List.data = JSON.parse(localStorage.getItem('muziq.lists')) || {};	
+		}
 	}
+
 
 
 }
